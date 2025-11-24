@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      xmlns:c="http://jmix.io/schema/flowui/jpql-condition"
+      title="msg://loginEventListView.title"
+      focusComponent="loginEventsDataGrid">
+    <data>
+        <collection id="loginEventsDc"
+                    class="com.company.businessmetrics.entity.LoginEvent">
+            <fetchPlan extends="_base"/>
+            <loader id="loginEventsDl" readOnly="true">
+                <query>
+                    <![CDATA[select e from LoginEvent e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <urlQueryParameters>
+            <genericFilter component="genericFilter"/>
+            <pagination component="pagination"/>
+        </urlQueryParameters>
+    </facets>
+    <actions>
+        <action id="selectAction" type="lookup_select"/>
+        <action id="discardAction" type="lookup_discard"/>
+    </actions>
+    <layout>
+        <genericFilter id="genericFilter"
+                       dataLoader="loginEventsDl">
+            <properties include=".*"/>
+        </genericFilter>
+        <dataGrid id="loginEventsDataGrid"
+                  width="100%"
+                  minHeight="20em"
+                  dataContainer="loginEventsDc"
+                  columnReorderingAllowed="true">
+            <columns resizable="true">
+                <column property="userName"/>
+                <column property="userId"/>
+                <column property="loginTime"/>
+            </columns>
+        </dataGrid>
+        <hbox id="buttonsPanel" classNames="buttons-panel">
+            <endSlot>
+                <simplePagination id="pagination" dataLoader="loginEventsDl"/>
+            </endSlot>
+        </hbox>
+    </layout>
+</view>

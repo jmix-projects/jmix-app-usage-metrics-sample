@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="BusinessMetrics">
+        <dropForeignKeyConstraint baseTableName="login_event" constraintName="fk_login_event_on_user"/>
+    </changeSet>
+    <changeSet id="2" author="BusinessMetrics">
+        <addColumn tableName="LOGIN_EVENT">
+            <column name="USER_NAME" type="VARCHAR(255)"/>
+        </addColumn>
+
+        <addNotNullConstraint columnName="USER_NAME" defaultNullValue="''" tableName="LOGIN_EVENT"/>
+    </changeSet>
+    <changeSet id="3" author="BusinessMetrics">
+        <dropColumn columnName="created_by" tableName="login_event"/>
+    </changeSet>
+    <changeSet id="4" author="BusinessMetrics">
+        <dropNotNullConstraint columnDataType="UUID" columnName="USER_ID" tableName="LOGIN_EVENT"/>
+    </changeSet>
+</databaseChangeLog>

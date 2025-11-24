@@ -3,6 +3,8 @@
 
     <menu id="application" title="msg://com.company.businessmetrics/menu.application.title" opened="true">
         <item view="User.list" title="msg://com.company.businessmetrics.view.user/UserListView.title"/>
+        <item view="LoginEvent.list"
+              title="msg://com.company.businessmetrics.view.loginevent/loginEventListView.title"/>
     </menu>
 
 </menu-config>

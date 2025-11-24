@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="BusinessMetrics">
+        <addColumn tableName="LOGIN_EVENT">
+            <column name="LOGIN_TIME" type="${offsetDateTime.type}"/>
+        </addColumn>
+
+        <addNotNullConstraint columnName="LOGIN_TIME" defaultNullValue="now()" tableName="LOGIN_EVENT"/>
+    </changeSet>
+    <changeSet id="2" author="BusinessMetrics">
+        <dropColumn columnName="created_date" tableName="login_event"/>
+    </changeSet>
+    <changeSet id="3" author="BusinessMetrics">
+        <addNotNullConstraint columnDataType="UUID" columnName="USER_ID" tableName="LOGIN_EVENT" validate="true"/>
+    </changeSet>
+</databaseChangeLog>
