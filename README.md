@@ -81,10 +81,15 @@ active_users_wau{application="$application", instance="$instance"}
 
 <h3>The used transformations</h3>
 
-Labels to fields
+The following list of transformations was applied for the WAU metric visualizing. The DAU metrics visualizing is very simple. It contains only three transformations: **Labels to fields**, **Format time** and **Organize field by name**.
+The MAU metrics visualization is very similar to the DAU metrics.
+
+So following description is for the DAU metric visualization.
+
+**Labels to fields** - is used to transform the metric with labels to table where the labels become to be fields
 <img width="1273" height="611" alt="image" src="https://github.com/user-attachments/assets/660a54cb-b13b-4fff-9ed5-b854b468aba2" />
 
-**Format time** transformation using:
+**Format time** - to transform time into the required format(**DD-MM-YYYY** for DAU, **Wo [week] of YYYY** for WAU, and **MMMM YYYY** for MAU)
 <img width="1279" height="697" alt="image" src="https://github.com/user-attachments/assets/b7f81dc4-d354-419f-9068-12969e267bfa" />
 
 Group By
