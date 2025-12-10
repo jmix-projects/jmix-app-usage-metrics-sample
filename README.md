@@ -40,12 +40,18 @@ select sum(count_per_day)/:businessDaysCount
 ```
 [ActiveUsersMetricsService](src/main/java/com/company/businessmetrics/app/ActiveUsersMetricsService.java) - the service for the micrometer metrics data modifying 
 
+_Note_. The **MultiGaude** type of micrometer metrics is used.
+
 [BusinessDaysService](src/main/java/com/company/businessmetrics/app/BusinessDaysService.java) - the service for getting buisness days for the week or month
+
+_Note_. If you don't have an ability to use Business calendars Jmix Add-on, you can implement your own implmentation of this service.
 
 
 [ActiveUsersMetricsUpdateJob](src/main/java/com/company/businessmetrics/app/ActiveUsersMetricsUpdateJob.java) - the job for the metrics state updating
 
 [MetricsConfiguration](src/main/java/com/company/businessmetrics/app/MetricsConfiguration.java) - the configuration for the job
+
+_Note_. **businessMetrics.activeUsers.job.cronExpression** application parameter is used to determine the schedule of metrics update.
 
  **Grafana dashboard**
  
