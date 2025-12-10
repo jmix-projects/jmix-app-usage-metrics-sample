@@ -2,7 +2,6 @@ package com.company.businessmetrics.app;
 
 import com.company.businessmetrics.entity.LoginEvent;
 import com.company.businessmetrics.entity.User;
-import com.company.businessmetrics.repository.UserRepository;
 import io.jmix.core.UnconstrainedDataManager;
 import org.springframework.context.event.EventListener;
 import org.springframework.security.authentication.event.InteractiveAuthenticationSuccessEvent;
