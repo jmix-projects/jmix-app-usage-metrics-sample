@@ -93,19 +93,19 @@ So following description is for the DAU metric visualization.
 **Format time** - to transform time into the required format(**DD-MM-YYYY** for DAU, **Wo [week] of YYYY** for WAU, and **MMMM YYYY** for MAU)
 <img width="1279" height="697" alt="image" src="https://github.com/user-attachments/assets/b7f81dc4-d354-419f-9068-12969e267bfa" />
 
-Group By
+**Group By** - for grouping data by time periods(days, or weeks, or month)
 <img width="1281" height="775" alt="image" src="https://github.com/user-attachments/assets/061f77ec-305a-43a9-a8a6-1e0253f37e93" />
 
-Join by field
+**Join by field** - behaves like SQL join. It needs to combine some datasets in a single dataset with rows joining by some field
 <img width="1258" height="700" alt="image" src="https://github.com/user-attachments/assets/6978a97a-4c85-4c7b-aef7-27404e6564cc" />
 
-Organize fields by name
+**Organize fields by name** - solve three problems. It helps to hide not necessary fields. It helps to give human readable names for fields. And it helps reorder fields.
 <img width="1278" height="763" alt="image" src="https://github.com/user-attachments/assets/bcac6fe2-c3cb-4391-9500-0f0c8c870052" />
 
-Add field from calculation
+**Add field from calculation** - adds additional field with values that the result of mathematic calculantion
 <img width="1273" height="558" alt="image" src="https://github.com/user-attachments/assets/4ca303c8-5963-49f2-9efa-110ddb8a4899" />
 
-Organize field by name
+**Organize field by name** - in this case we use it for final reordering the fields
 <img width="1270" height="720" alt="image" src="https://github.com/user-attachments/assets/b8d56e98-2039-44d2-9823-946277ce1795" />
 
 <h3>Vizualizations</h3>
