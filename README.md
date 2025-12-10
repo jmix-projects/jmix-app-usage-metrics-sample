@@ -3,14 +3,17 @@
 
 **Necessary dependencies**
 
+```
 implementation 'org.springframework.boot:spring-boot-starter-actuator'
 implementation 'io.micrometer:micrometer-registry-prometheus'
 implementation 'org.springframework:spring-jdbc'
+```
 
 
 
 
 **Key classes and services**
+
 [ActuatorSecurityConfiguration](src/main/java/com/company/businessmetrics/ActuatorSecurityConfiguration.java) - the spring security configuration for getting direct access to the prometheus actuator endpoint without the authorization
 
 
@@ -31,3 +34,5 @@ implementation 'org.springframework:spring-jdbc'
 [MetricsConfiguration](src/main/java/com/company/businessmetrics/app/MetricsConfiguration.java) - the configuration for the job
 
  **Grafana dashboard**
+ 
+ [Dashboard configuration](dashboards/buiseness_metrics.json)
