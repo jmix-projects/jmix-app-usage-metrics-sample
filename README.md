@@ -1,6 +1,7 @@
 <h1>DAU, MAU, WAU metrics demo application</h1>
 
 <h2>Base settings and environment</h2>
+
 **Database**: PostgreSQL <br/>
 **Jmix Add-ons**: Data Tools, Business Calendars, Quartz.
 
