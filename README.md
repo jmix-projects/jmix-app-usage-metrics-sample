@@ -87,10 +87,18 @@ Organize fields by name
 <img width="1278" height="763" alt="image" src="https://github.com/user-attachments/assets/bcac6fe2-c3cb-4391-9500-0f0c8c870052" />
 
 Add field from calculation
+<img width="1273" height="558" alt="image" src="https://github.com/user-attachments/assets/4ca303c8-5963-49f2-9efa-110ddb8a4899" />
 
+Organize field by name
+<img width="1270" height="720" alt="image" src="https://github.com/user-attachments/assets/b8d56e98-2039-44d2-9823-946277ce1795" />
 
+_**Vizualizations**_
 
+**Table** vizualization
+<img width="733" height="349" alt="image" src="https://github.com/user-attachments/assets/4c9c7ea9-e6bf-43b8-a65a-25616f8d9ac6" />
 
+**Bar chart** vizualization
+<img width="858" height="341" alt="image" src="https://github.com/user-attachments/assets/26a86a0b-2235-4320-8ee1-be752084e764" />
 
  
  [Dashboard configuration](dashboards/buiseness_metrics.json)
