@@ -53,15 +53,42 @@ _Note_. If you don't have an ability to use Business calendars Jmix Add-on, you 
 
 _Note_. **businessMetrics.activeUsers.job.cronExpression** application parameter is used to determine the schedule of metrics update.
 
- **Grafana dashboard**
- The key concepts:
- The dashboard variables for data filtering:
+ **Grafana dashboard. Key concepts**
+ 
+ _**The dashboard variables for data filtering**_
+ 
  <img width="974" height="200" alt="image" src="https://github.com/user-attachments/assets/d1f47ec2-5f92-4197-a0c1-583e01e463c9" />
+
+_**The PromQL queries for getting metrics data**_
+
+```
+active_users_dau{application="$application", instance="$instance"}
+active_users_wau{application="$application", instance="$instance"}
+active_users_mau{application="$application", instance="$instance"}
+```
+_**Source data**_
+
+
+
+
+_**The used transformations**_
+
+
+
+Labels to fields
+
+
+
 **Format time** transformation using:
-<img width="974" height="419" alt="image" src="https://github.com/user-attachments/assets/faa70302-ab8b-416f-b5c2-cf79eac9de52" />
+
 
 Group By
-<img width="974" height="516" alt="image" src="https://github.com/user-attachments/assets/2c981d21-130d-457a-bfd3-f75c8550101f" />
+
+Join by field
+
+
+Organize fields
+
 
 
  
