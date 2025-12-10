@@ -110,5 +110,6 @@ Organize field by name
 **Bar chart** vizualization
 <img width="858" height="341" alt="image" src="https://github.com/user-attachments/assets/26a86a0b-2235-4320-8ee1-be752084e764" />
 
+<h3>Full dashboard configuration</h3>
  
- [Dashboard configuration](dashboards/buiseness_metrics.json)
+The whole dashboard configuration could be found here [Dashboard configuration](dashboards/buiseness_metrics.json)
