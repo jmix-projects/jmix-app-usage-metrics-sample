@@ -1,7 +1,10 @@
-**Database**: PostgreSQL <br/>
-**Add-ons**: Data Tools, Business Calendars, Quartz.
+<h1>DAU, MAU, WAU metrics demo application</h1>
 
-**Necessary dependencies**
+<h2>Base settings and environment</h2>
+**Database**: PostgreSQL <br/>
+**Jmix Add-ons**: Data Tools, Business Calendars, Quartz.
+
+<h2>Necessary dependencies</h2>
 
 ```
 implementation 'org.springframework.boot:spring-boot-starter-actuator'
@@ -9,14 +12,14 @@ implementation 'io.micrometer:micrometer-registry-prometheus'
 implementation 'org.springframework:spring-jdbc'
 ```
 
-**Application properties**
+<h2>Application properties</h2>
 ```
 management.endpoints.web.exposure.include=*
 management.metrics.tags.application=business-metrics-app
 businessMetrics.activeUsers.job.cronExpression=0/10 * * * * ?
 ```
 
-**Key classes and services**
+<h2>Key application classes and services</h2>
 
 [ActuatorSecurityConfiguration](src/main/java/com/company/businessmetrics/ActuatorSecurityConfiguration.java) - the spring security configuration for getting direct access to the prometheus actuator endpoint without the authorization
 
@@ -53,23 +56,29 @@ _Note_. If you don't have an ability to use Business calendars Jmix Add-on, you 
 
 _Note_. **businessMetrics.activeUsers.job.cronExpression** application parameter is used to determine the schedule of metrics update.
 
- **Grafana dashboard. Key concepts**
+ <h2>Grafana dashboard. Key concepts</h2>
  
- _**The dashboard variables for data filtering**_
+ <h3>The dashboard variables for data filtering</h3>
  
  <img width="974" height="200" alt="image" src="https://github.com/user-attachments/assets/d1f47ec2-5f92-4197-a0c1-583e01e463c9" />
 
-_**The PromQL queries for getting metrics data**_
+<h3>The PromQL queries for getting metrics data</h3>
 
 ```
 active_users_dau{application="$application", instance="$instance"}
 active_users_wau{application="$application", instance="$instance"}
 active_users_mau{application="$application", instance="$instance"}
 ```
-_**Source data**_
+<h3>Source data</h3>
+This is the result of following query executing
+
+```
+active_users_wau{application="$application", instance="$instance"}
+```
+
 <img width="1278" height="393" alt="image" src="https://github.com/user-attachments/assets/dc94cb83-38e3-4dd2-868f-7e0829370cab" />
 
-_**The used transformations**_
+<h3>The used transformations</h3>
 
 Labels to fields
 <img width="1273" height="611" alt="image" src="https://github.com/user-attachments/assets/660a54cb-b13b-4fff-9ed5-b854b468aba2" />
@@ -92,7 +101,7 @@ Add field from calculation
 Organize field by name
 <img width="1270" height="720" alt="image" src="https://github.com/user-attachments/assets/b8d56e98-2039-44d2-9823-946277ce1795" />
 
-_**Vizualizations**_
+<h3>Vizualizations</h3>
 
 **Table** vizualization
 <img width="733" height="349" alt="image" src="https://github.com/user-attachments/assets/4c9c7ea9-e6bf-43b8-a65a-25616f8d9ac6" />
