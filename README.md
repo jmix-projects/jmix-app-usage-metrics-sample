@@ -72,6 +72,7 @@ active_users_wau{application="$application", instance="$instance"}
 active_users_mau{application="$application", instance="$instance"}
 ```
 <h3>Source data</h3>
+
 This is the result of following query executing
 
 ```
@@ -110,6 +111,8 @@ So following description is for the DAU metric visualization.
 
 <h3>Vizualizations</h3>
 
+The final dataset can be visualized in a different ways.
+
 **Table** vizualization<br/>
 <img width="733" height="349" alt="image" src="https://github.com/user-attachments/assets/4c9c7ea9-e6bf-43b8-a65a-25616f8d9ac6" />
 
@@ -119,5 +122,6 @@ So following description is for the DAU metric visualization.
 <h3>Full dashboard configuration</h3>
  
 The whole dashboard configuration could be found here [Dashboard configuration](dashboards/buiseness_metrics.json)
+
 <img width="1084" height="781" alt="image" src="https://github.com/user-attachments/assets/cf377011-9ef2-43ce-be76-b831191cff7c" />
 
