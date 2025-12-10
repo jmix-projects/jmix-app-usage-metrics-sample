@@ -67,27 +67,28 @@ active_users_wau{application="$application", instance="$instance"}
 active_users_mau{application="$application", instance="$instance"}
 ```
 _**Source data**_
-
-
-
+<img width="1278" height="393" alt="image" src="https://github.com/user-attachments/assets/dc94cb83-38e3-4dd2-868f-7e0829370cab" />
 
 _**The used transformations**_
 
-
-
 Labels to fields
-
-
+<img width="1273" height="611" alt="image" src="https://github.com/user-attachments/assets/660a54cb-b13b-4fff-9ed5-b854b468aba2" />
 
 **Format time** transformation using:
-
+<img width="1279" height="697" alt="image" src="https://github.com/user-attachments/assets/b7f81dc4-d354-419f-9068-12969e267bfa" />
 
 Group By
+<img width="1281" height="775" alt="image" src="https://github.com/user-attachments/assets/061f77ec-305a-43a9-a8a6-1e0253f37e93" />
 
 Join by field
+<img width="1258" height="700" alt="image" src="https://github.com/user-attachments/assets/6978a97a-4c85-4c7b-aef7-27404e6564cc" />
+
+Organize fields by name
+<img width="1278" height="763" alt="image" src="https://github.com/user-attachments/assets/bcac6fe2-c3cb-4391-9500-0f0c8c870052" />
+
+Add field from calculation
 
 
-Organize fields
 
 
 
