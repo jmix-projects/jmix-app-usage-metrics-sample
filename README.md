@@ -13,6 +13,7 @@ implementation 'org.springframework:spring-jdbc'
 ```
 
 <h2>Application properties</h2>
+
 ```
 management.endpoints.web.exposure.include=*
 management.metrics.tags.application=business-metrics-app
