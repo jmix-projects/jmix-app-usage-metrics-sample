@@ -26,15 +26,16 @@ businessMetrics.activeUsers.job.cronExpression=0/10 * * * * ?
 [ActuatorSecurityConfiguration](src/main/java/com/company/businessmetrics/ActuatorSecurityConfiguration.java) - the spring security configuration for getting direct access to the prometheus actuator endpoint without the authorization
 
 
-[LoginEvent](src/main/java/com/company/businessmetrics/entity/LoginEvent.java) - the entity for representing event of user entering into the system
+[LoginEvent](src/main/java/com/company/businessmetrics/entity/LoginEvent.java) - the entity for representing the event of user entering into the system
+
 [MetricDTO](src/main/java/com/company/businessmetrics/entity/MetricDTO.java) - the data transfer object for getting data from the database
 
-[UserLoginListener](src/main/java/com/company/businessmetrics/app/UserLoginListener.java) - the listener for the login events registrating
+[UserLoginListener](src/main/java/com/company/businessmetrics/app/UserLoginListener.java) - the listener for the login events registration
 
 
 [ActiveUsersMetricsDAO](src/main/java/com/company/businessmetrics/app/ActiveUsersMetricsDAO.java) - the service for getting data from the database
 
-_Note_. The DTO and JDBC are used instead of using JPA technology because of the specific complex SQL quries. For example:
+_Note_. The DTO and JDBC are used instead of using JPA technology because of the specific complex SQL queries. For example:
 ```
 select sum(count_per_day)/:businessDaysCount
     from (select count(DISTINCT user_id) as count_per_day
@@ -47,9 +48,9 @@ select sum(count_per_day)/:businessDaysCount
 
 _Note_. The **MultiGaude** type of micrometer metrics is used.
 
-[BusinessDaysService](src/main/java/com/company/businessmetrics/app/BusinessDaysService.java) - the service for getting buisness days for the week or month
+[BusinessDaysService](src/main/java/com/company/businessmetrics/app/BusinessDaysService.java) - the service for getting business days for the week or month
 
-_Note_. If you don't have an ability to use Business calendars Jmix Add-on, you can implement your own implmentation of this service.
+_Note_. If you don't have the ability to use Business calendars Jmix Add-on, you can implement your own implementation of this service.
 
 
 [ActiveUsersMetricsUpdateJob](src/main/java/com/company/businessmetrics/app/ActiveUsersMetricsUpdateJob.java) - the job for the metrics state updating
@@ -83,12 +84,12 @@ active_users_wau{application="$application", instance="$instance"}
 
 <h3>The used transformations</h3>
 
-The following list of transformations was applied for the WAU metric visualizing. The DAU metrics visualizing is very simple. It contains only three transformations: **Labels to fields**, **Format time** and **Organize field by name**.
+The following list of transformations was applied for the WAU metric visualization. The DAU metrics visualization is very simple. It contains only three transformations: **Labels to fields**, **Format time** and **Organize field by name**.
 The MAU metrics visualization is very similar to the DAU metrics.
 
-So following description is for the DAU metric visualization.
+So the following description is for the DAU metric visualization.
 
-**Labels to fields** - is used to transform the metric with labels to table where the labels become to be fields
+**Labels to fields** - is used to transform the metric with labels to a table where the labels become fields
 <img width="1273" height="611" alt="image" src="https://github.com/user-attachments/assets/660a54cb-b13b-4fff-9ed5-b854b468aba2" />
 
 **Format time** - to transform time into the required format(**DD-MM-YYYY** for DAU, **Wo [week] of YYYY** for WAU, and **MMMM YYYY** for MAU)
@@ -97,13 +98,13 @@ So following description is for the DAU metric visualization.
 **Group By** - for grouping data by time periods(days, or weeks, or month)
 <img width="1281" height="775" alt="image" src="https://github.com/user-attachments/assets/061f77ec-305a-43a9-a8a6-1e0253f37e93" />
 
-**Join by field** - behaves like SQL join. It needs to combine some datasets in a single dataset with rows joining by some field
+**Join by field** - behaves like SQL join. It combines some datasets into a single one with rows joining by some field
 <img width="1258" height="700" alt="image" src="https://github.com/user-attachments/assets/6978a97a-4c85-4c7b-aef7-27404e6564cc" />
 
-**Organize fields by name** - solve three problems. It helps to hide not necessary fields. It helps to give human readable names for fields. And it helps reorder fields.
+**Organize fields by name** - solves three problems. It helps to hide not necessary fields. It helps to give human-readable names for fields. And it helps reorder fields.
 <img width="1278" height="763" alt="image" src="https://github.com/user-attachments/assets/bcac6fe2-c3cb-4391-9500-0f0c8c870052" />
 
-**Add field from calculation** - adds additional field with values that the result of mathematic calculantion
+**Add field from calculation** - adds additional field with values that the result of mathematical calculantion
 <img width="1273" height="558" alt="image" src="https://github.com/user-attachments/assets/4ca303c8-5963-49f2-9efa-110ddb8a4899" />
 
 **Organize field by name** - in this case we use it for final reordering the fields
@@ -129,7 +130,7 @@ The whole dashboard configuration could be found here [Dashboard configuration](
 
 <h4>Docker-compose project</h4>
 
-You can find a ready-to-use docker-compose project with ready Prometheus and Grafana services configurations.
+You can find a ready-to-use Docker-compose project with ready Prometheus and Grafana services configurations.
 
 The project is in the **/monitoring** folder.
 
