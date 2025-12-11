@@ -1,29 +1,4 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_JMIX_MONITORING",
-      "label": "JMIX_MONITORING",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "prometheus",
-      "pluginName": "Prometheus"
-    }
-  ],
-  "__requires": [
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "6.3.6"
-    },
-    {
-      "type": "datasource",
-      "id": "prometheus",
-      "name": "Prometheus",
-      "version": "1.0.0"
-    }
-  ],
-
   "annotations": {
     "list": [
       {
@@ -43,11 +18,11 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 12,
+  "id": 14,
   "links": [],
   "panels": [
     {
-      "datasource": "${DS_JMIX_MONITORING}",
+      "datasource": "PBFA97CFB590B2093",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -119,7 +94,7 @@
       "pluginVersion": "12.1.1",
       "targets": [
         {
-          "datasource": "${DS_JMIX_MONITORING}",
+          "datasource": "PBFA97CFB590B2093",
           "disableTextWrap": false,
           "editorMode": "code",
           "expr": "active_users_dau{application=\"$application\", instance=\"$instance\"}",
@@ -189,7 +164,7 @@
       "type": "barchart"
     },
     {
-      "datasource": "${DS_JMIX_MONITORING}",
+      "datasource": "PBFA97CFB590B2093",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -242,7 +217,7 @@
       "pluginVersion": "12.1.1",
       "targets": [
         {
-          "datasource": "${DS_JMIX_MONITORING}",
+          "datasource": "PBFA97CFB590B2093",
           "disableTextWrap": false,
           "editorMode": "code",
           "expr": "active_users_dau{application=\"$application\", instance=\"$instance\"}",
@@ -312,7 +287,7 @@
       "type": "table"
     },
     {
-      "datasource": "${DS_JMIX_MONITORING}",
+      "datasource": "PBFA97CFB590B2093",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -385,7 +360,7 @@
       "pluginVersion": "12.1.1",
       "targets": [
         {
-          "datasource": "${DS_JMIX_MONITORING}",
+          "datasource": "PBFA97CFB590B2093",
           "disableTextWrap": false,
           "editorMode": "code",
           "expr": "active_users_wau{application=\"$application\", instance=\"$instance\", subtype=\"main_value\"}",
@@ -399,7 +374,7 @@
           "useBackend": false
         },
         {
-          "datasource": "${DS_JMIX_MONITORING}",
+          "datasource": "PBFA97CFB590B2093",
           "disableTextWrap": false,
           "editorMode": "code",
           "expr": "active_users_wau{application=\"$application\", instance=\"$instance\", subtype=\"avg_dau\"}",
@@ -524,7 +499,7 @@
       "type": "barchart"
     },
     {
-      "datasource": "${DS_JMIX_MONITORING}",
+      "datasource": "PBFA97CFB590B2093",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -578,7 +553,7 @@
       "pluginVersion": "12.1.1",
       "targets": [
         {
-          "datasource": "${DS_JMIX_MONITORING}",
+          "datasource": "PBFA97CFB590B2093",
           "disableTextWrap": false,
           "editorMode": "code",
           "expr": "active_users_wau{application=\"$application\", instance=\"$instance\"}",
@@ -721,7 +696,7 @@
       "type": "table"
     },
     {
-      "datasource": "${DS_JMIX_MONITORING}",
+      "datasource": "PBFA97CFB590B2093",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -793,7 +768,7 @@
       "pluginVersion": "12.1.1",
       "targets": [
         {
-          "datasource": "${DS_JMIX_MONITORING}",
+          "datasource": "PBFA97CFB590B2093",
           "disableTextWrap": false,
           "editorMode": "code",
           "expr": "active_users_mau{application=\"$application\", instance=\"$instance\", subtype=\"main_value\"}",
@@ -807,7 +782,7 @@
           "useBackend": false
         },
         {
-          "datasource": "${DS_JMIX_MONITORING}",
+          "datasource": "PBFA97CFB590B2093",
           "disableTextWrap": false,
           "editorMode": "code",
           "expr": "active_users_mau{application=\"$application\", instance=\"$instance\", subtype=\"avg_dau\"}",
@@ -939,7 +914,7 @@
       "type": "barchart"
     },
     {
-      "datasource": "${DS_JMIX_MONITORING}",
+      "datasource": "PBFA97CFB590B2093",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -993,7 +968,7 @@
       "pluginVersion": "12.1.1",
       "targets": [
         {
-          "datasource": "${DS_JMIX_MONITORING}",
+          "datasource": "PBFA97CFB590B2093",
           "disableTextWrap": false,
           "editorMode": "code",
           "expr": "active_users_mau{application=\"$application\", instance=\"$instance\", subtype=\"main_value\"}",
@@ -1007,7 +982,7 @@
           "useBackend": false
         },
         {
-          "datasource": "${DS_JMIX_MONITORING}",
+          "datasource": "PBFA97CFB590B2093",
           "disableTextWrap": false,
           "editorMode": "code",
           "expr": "active_users_mau{application=\"$application\", instance=\"$instance\", subtype=\"avg_dau\"}",
@@ -1021,7 +996,7 @@
           "useBackend": false
         },
         {
-          "datasource": "${DS_JMIX_MONITORING}",
+          "datasource": "PBFA97CFB590B2093",
           "disableTextWrap": false,
           "editorMode": "code",
           "expr": "active_users_mau{application=\"$application\", instance=\"$instance\", subtype=\"days_count\"}",
@@ -1179,7 +1154,7 @@
           "text": "business-metrics-app",
           "value": "business-metrics-app"
         },
-        "datasource": "${DS_JMIX_MONITORING}",
+        "datasource": "PBFA97CFB590B2093",
         "definition": "label_values(application)",
         "label": "Application",
         "name": "application",
@@ -1198,7 +1173,7 @@
           "text": "host.docker.internal:8085",
           "value": "host.docker.internal:8085"
         },
-        "datasource": "${DS_JMIX_MONITORING}",
+        "datasource": "PBFA97CFB590B2093",
         "definition": "label_values({application=\"$application\"},instance)",
         "label": "Instance",
         "name": "instance",
@@ -1220,7 +1195,7 @@
   },
   "timepicker": {},
   "timezone": "browser",
-  "title": "Business metrics",
+  "title": "DAU, WAU, MAU",
   "uid": "bd186d5f-d4b0-4aad-9914-e05f5736ab99",
-  "version": 6
+  "version": 1
 }

@@ -1,0 +1,1226 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_JMIX_MONITORING",
+      "label": "JMIX_MONITORING",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "prometheus",
+      "pluginName": "Prometheus"
+    }
+  ],
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "6.3.6"
+    },
+    {
+      "type": "datasource",
+      "id": "prometheus",
+      "name": "Prometheus",
+      "version": "1.0.0"
+    }
+  ],
+
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 12,
+  "links": [],
+  "panels": [
+    {
+      "datasource": "${DS_JMIX_MONITORING}",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 19,
+        "x": 0,
+        "y": 0
+      },
+      "id": 22,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "orientation": "auto",
+        "showValue": "always",
+        "stacking": "none",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "12.1.1",
+      "targets": [
+        {
+          "datasource": "${DS_JMIX_MONITORING}",
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "expr": "active_users_dau{application=\"$application\", instance=\"$instance\"}",
+          "fullMetaSearch": false,
+          "hide": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
+        }
+      ],
+      "title": "DAU",
+      "transformations": [
+        {
+          "id": "formatTime",
+          "options": {
+            "outputFormat": "DD.MM.YY",
+            "timeField": "Time",
+            "timezone": "browser",
+            "useTimezone": true
+          }
+        },
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "Time": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "active_users_dau": {
+                "aggregations": [
+                  "max"
+                ],
+                "operation": "aggregate"
+              },
+              "period": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "{__name__=\"active_users_dau\", application=\"business-metrics-app\", instance=\"host.docker.internal:8085\", job=\"dau-mau-wau\"}": {
+                "aggregations": [
+                  "lastNotNull"
+                ],
+                "operation": "aggregate"
+              }
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Time": "День",
+              "active_users_dau (max)": "Количество",
+              "period": "День",
+              "{__name__=\"active_users_dau\", application=\"business-metrics-app\", instance=\"host.docker.internal:8085\", job=\"dau-mau-wau\"} (lastNotNull)": "DAU"
+            }
+          }
+        }
+      ],
+      "type": "barchart"
+    },
+    {
+      "datasource": "${DS_JMIX_MONITORING}",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 5,
+        "x": 19,
+        "y": 0
+      },
+      "id": 13,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "frameIndex": 0,
+        "showHeader": true
+      },
+      "pluginVersion": "12.1.1",
+      "targets": [
+        {
+          "datasource": "${DS_JMIX_MONITORING}",
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "expr": "active_users_dau{application=\"$application\", instance=\"$instance\"}",
+          "fullMetaSearch": false,
+          "hide": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
+        }
+      ],
+      "title": "DAU",
+      "transformations": [
+        {
+          "id": "formatTime",
+          "options": {
+            "outputFormat": "DD-MM-YYYY",
+            "timeField": "Time",
+            "timezone": "browser",
+            "useTimezone": true
+          }
+        },
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "Time": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "active_users_dau": {
+                "aggregations": [
+                  "max"
+                ],
+                "operation": "aggregate"
+              },
+              "period": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "{__name__=\"active_users_dau\", application=\"business-metrics-app\", instance=\"host.docker.internal:8085\", job=\"dau-mau-wau\"}": {
+                "aggregations": [
+                  "lastNotNull"
+                ],
+                "operation": "aggregate"
+              }
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Time": "День",
+              "active_users_dau (max)": "Количество",
+              "period": "День",
+              "{__name__=\"active_users_dau\", application=\"business-metrics-app\", instance=\"host.docker.internal:8085\", job=\"dau-mau-wau\"} (lastNotNull)": "DAU"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": "${DS_JMIX_MONITORING}",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisWidth": 1,
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 13,
+        "x": 0,
+        "y": 11
+      },
+      "id": 23,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "orientation": "auto",
+        "showValue": "auto",
+        "stacking": "none",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "12.1.1",
+      "targets": [
+        {
+          "datasource": "${DS_JMIX_MONITORING}",
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "expr": "active_users_wau{application=\"$application\", instance=\"$instance\", subtype=\"main_value\"}",
+          "fullMetaSearch": false,
+          "hide": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
+        },
+        {
+          "datasource": "${DS_JMIX_MONITORING}",
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "expr": "active_users_wau{application=\"$application\", instance=\"$instance\", subtype=\"avg_dau\"}",
+          "fullMetaSearch": false,
+          "hide": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "B",
+          "useBackend": false
+        }
+      ],
+      "title": "WAU",
+      "transformations": [
+        {
+          "id": "labelsToFields",
+          "options": {
+            "keepLabels": [
+              "period",
+              "subtype"
+            ]
+          }
+        },
+        {
+          "id": "formatTime",
+          "options": {
+            "outputFormat": "Wo [week] of YYYY",
+            "timeField": "Time",
+            "useTimezone": true
+          }
+        },
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "Time": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "active_users_wau": {
+                "aggregations": [
+                  "lastNotNull"
+                ],
+                "operation": "aggregate"
+              },
+              "period": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "subtype": {
+                "aggregations": [],
+                "operation": "groupby"
+              }
+            }
+          }
+        },
+        {
+          "id": "joinByField",
+          "options": {
+            "byField": "Time",
+            "mode": "outer"
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "subtype 1": true,
+              "subtype 2": true,
+              "subtype 3": true
+            },
+            "includeByName": {},
+            "indexByName": {
+              "Time": 3,
+              "active_users_wau (lastNotNull) 1": 4,
+              "active_users_wau (lastNotNull) 2": 5,
+              "active_users_wau (lastNotNull) 3": 6,
+              "subtype 1": 0,
+              "subtype 2": 1,
+              "subtype 3": 2
+            },
+            "orderByMode": "manual",
+            "renameByName": {
+              "Time": "Week number",
+              "active_users_wau (lastNotNull) 1": "WAU",
+              "active_users_wau (lastNotNull) 2": "AVG DAU",
+              "active_users_wau (lastNotNull) 3": "Business days",
+              "active_users_wau (max) 1": "Липкость",
+              "active_users_wau (max) 2": "Среднее DAU",
+              "active_users_wau (max) 3": "WAU",
+              "period": "Неделя"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Stikiness",
+            "binary": {
+              "left": {
+                "matcher": {
+                  "id": "byName",
+                  "options": "AVG DAU"
+                }
+              },
+              "operator": "/",
+              "right": {
+                "matcher": {
+                  "id": "byName",
+                  "options": "WAU"
+                }
+              }
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        }
+      ],
+      "type": "barchart"
+    },
+    {
+      "datasource": "${DS_JMIX_MONITORING}",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false,
+            "width": 140
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 11,
+        "x": 13,
+        "y": 11
+      },
+      "id": 16,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "frameIndex": 3,
+        "showHeader": true
+      },
+      "pluginVersion": "12.1.1",
+      "targets": [
+        {
+          "datasource": "${DS_JMIX_MONITORING}",
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "expr": "active_users_wau{application=\"$application\", instance=\"$instance\"}",
+          "fullMetaSearch": false,
+          "hide": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
+        }
+      ],
+      "title": "WAU",
+      "transformations": [
+        {
+          "id": "labelsToFields",
+          "options": {
+            "keepLabels": [
+              "period",
+              "subtype"
+            ]
+          }
+        },
+        {
+          "id": "formatTime",
+          "options": {
+            "outputFormat": "Wo [week] of YYYY",
+            "timeField": "Time",
+            "useTimezone": true
+          }
+        },
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "Time": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "active_users_wau": {
+                "aggregations": [
+                  "lastNotNull"
+                ],
+                "operation": "aggregate"
+              },
+              "period": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "subtype": {
+                "aggregations": [],
+                "operation": "groupby"
+              }
+            }
+          }
+        },
+        {
+          "id": "joinByField",
+          "options": {
+            "byField": "Time",
+            "mode": "outer"
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "active_users_wau (lastNotNull) 4": true,
+              "subtype 1": true,
+              "subtype 2": true,
+              "subtype 3": true,
+              "subtype 4": true
+            },
+            "includeByName": {},
+            "indexByName": {
+              "active_users_wau (max) 1": 3,
+              "active_users_wau (max) 2": 2,
+              "active_users_wau (max) 3": 1,
+              "period": 0,
+              "subtype 1": 4,
+              "subtype 2": 5,
+              "subtype 3": 6
+            },
+            "orderByMode": "manual",
+            "renameByName": {
+              "Time": "Week number",
+              "active_users_wau (lastNotNull) 1": "WAU",
+              "active_users_wau (lastNotNull) 2": "AVG DAU",
+              "active_users_wau (lastNotNull) 3": "Business days",
+              "active_users_wau (lastNotNull) 4": "",
+              "active_users_wau (max) 1": "Липкость",
+              "active_users_wau (max) 2": "Среднее DAU",
+              "active_users_wau (max) 3": "WAU",
+              "period": "Неделя"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Stikiness",
+            "binary": {
+              "left": {
+                "matcher": {
+                  "id": "byName",
+                  "options": "AVG DAU"
+                }
+              },
+              "operator": "/",
+              "right": {
+                "matcher": {
+                  "id": "byName",
+                  "options": "WAU"
+                }
+              }
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {
+              "AVG DAU": 2,
+              "Business days": 4,
+              "Stikiness": 3,
+              "WAU": 1,
+              "Week number": 0
+            },
+            "renameByName": {}
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": "${DS_JMIX_MONITORING}",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 13,
+        "x": 0,
+        "y": 20
+      },
+      "id": 25,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "orientation": "auto",
+        "showValue": "auto",
+        "stacking": "none",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "12.1.1",
+      "targets": [
+        {
+          "datasource": "${DS_JMIX_MONITORING}",
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "expr": "active_users_mau{application=\"$application\", instance=\"$instance\", subtype=\"main_value\"}",
+          "fullMetaSearch": false,
+          "hide": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
+        },
+        {
+          "datasource": "${DS_JMIX_MONITORING}",
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "expr": "active_users_mau{application=\"$application\", instance=\"$instance\", subtype=\"avg_dau\"}",
+          "fullMetaSearch": false,
+          "hide": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "B",
+          "useBackend": false
+        }
+      ],
+      "title": "MAU",
+      "transformations": [
+        {
+          "id": "labelsToFields",
+          "options": {
+            "keepLabels": [
+              "period",
+              "subtype"
+            ]
+          }
+        },
+        {
+          "id": "formatTime",
+          "options": {
+            "outputFormat": "MMMM YYYY",
+            "timeField": "Time",
+            "useTimezone": true
+          }
+        },
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "Time": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "active_users_mau": {
+                "aggregations": [
+                  "lastNotNull"
+                ],
+                "operation": "aggregate"
+              },
+              "active_users_wau": {
+                "aggregations": [
+                  "lastNotNull"
+                ],
+                "operation": "aggregate"
+              },
+              "period": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "subtype": {
+                "aggregations": [],
+                "operation": "groupby"
+              }
+            }
+          }
+        },
+        {
+          "id": "joinByField",
+          "options": {
+            "byField": "Time",
+            "mode": "outer"
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "subtype 1": true,
+              "subtype 2": true,
+              "subtype 3": true
+            },
+            "includeByName": {},
+            "indexByName": {
+              "active_users_wau (max) 1": 3,
+              "active_users_wau (max) 2": 2,
+              "active_users_wau (max) 3": 1,
+              "period": 0,
+              "subtype 1": 4,
+              "subtype 2": 5,
+              "subtype 3": 6
+            },
+            "orderByMode": "manual",
+            "renameByName": {
+              "Time": "Month",
+              "active_users_mau (lastNotNull) 1": "MAU",
+              "active_users_mau (lastNotNull) 2": "AVG DAU",
+              "active_users_wau (lastNotNull) 1": "WAU",
+              "active_users_wau (lastNotNull) 2": "AVG DAU",
+              "active_users_wau (max) 1": "Липкость",
+              "active_users_wau (max) 2": "Среднее DAU",
+              "active_users_wau (max) 3": "WAU",
+              "period": "Неделя"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Stikiness",
+            "binary": {
+              "left": {
+                "matcher": {
+                  "id": "byName",
+                  "options": "AVG DAU"
+                }
+              },
+              "operator": "/",
+              "right": {
+                "matcher": {
+                  "id": "byName",
+                  "options": "MAU"
+                }
+              }
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        }
+      ],
+      "type": "barchart"
+    },
+    {
+      "datasource": "${DS_JMIX_MONITORING}",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false,
+            "width": 130
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 11,
+        "x": 13,
+        "y": 20
+      },
+      "id": 24,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "frameIndex": 0,
+        "showHeader": true
+      },
+      "pluginVersion": "12.1.1",
+      "targets": [
+        {
+          "datasource": "${DS_JMIX_MONITORING}",
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "expr": "active_users_mau{application=\"$application\", instance=\"$instance\", subtype=\"main_value\"}",
+          "fullMetaSearch": false,
+          "hide": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
+        },
+        {
+          "datasource": "${DS_JMIX_MONITORING}",
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "expr": "active_users_mau{application=\"$application\", instance=\"$instance\", subtype=\"avg_dau\"}",
+          "fullMetaSearch": false,
+          "hide": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "B",
+          "useBackend": false
+        },
+        {
+          "datasource": "${DS_JMIX_MONITORING}",
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "expr": "active_users_mau{application=\"$application\", instance=\"$instance\", subtype=\"days_count\"}",
+          "fullMetaSearch": false,
+          "hide": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "C",
+          "useBackend": false
+        }
+      ],
+      "title": "MAU",
+      "transformations": [
+        {
+          "id": "labelsToFields",
+          "options": {
+            "keepLabels": [
+              "period",
+              "subtype"
+            ]
+          }
+        },
+        {
+          "id": "formatTime",
+          "options": {
+            "outputFormat": "MMMM YYYY",
+            "timeField": "Time",
+            "useTimezone": true
+          }
+        },
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "Time": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "active_users_mau": {
+                "aggregations": [
+                  "lastNotNull"
+                ],
+                "operation": "aggregate"
+              },
+              "active_users_wau": {
+                "aggregations": [
+                  "lastNotNull"
+                ],
+                "operation": "aggregate"
+              },
+              "period": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "subtype": {
+                "aggregations": [],
+                "operation": "groupby"
+              }
+            }
+          }
+        },
+        {
+          "id": "joinByField",
+          "options": {
+            "byField": "Time",
+            "mode": "outer"
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "subtype 1": true,
+              "subtype 2": true,
+              "subtype 3": true
+            },
+            "includeByName": {},
+            "indexByName": {
+              "active_users_wau (max) 1": 3,
+              "active_users_wau (max) 2": 2,
+              "active_users_wau (max) 3": 1,
+              "period": 0,
+              "subtype 1": 4,
+              "subtype 2": 5,
+              "subtype 3": 6
+            },
+            "orderByMode": "manual",
+            "renameByName": {
+              "Time": "Month",
+              "active_users_mau (lastNotNull) 1": "MAU",
+              "active_users_mau (lastNotNull) 2": "AVG DAU",
+              "active_users_mau (lastNotNull) 3": "Business days",
+              "active_users_wau (lastNotNull) 1": "WAU",
+              "active_users_wau (lastNotNull) 2": "AVG DAU",
+              "active_users_wau (max) 1": "Липкость",
+              "active_users_wau (max) 2": "Среднее DAU",
+              "active_users_wau (max) 3": "WAU",
+              "period": "Неделя"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Stikiness",
+            "binary": {
+              "left": {
+                "matcher": {
+                  "id": "byName",
+                  "options": "AVG DAU"
+                }
+              },
+              "operator": "/",
+              "right": {
+                "matcher": {
+                  "id": "byName",
+                  "options": "MAU"
+                }
+              }
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {
+              "AVG DAU": 2,
+              "Business days": 4,
+              "MAU": 1,
+              "Month": 0,
+              "Stikiness": 3
+            },
+            "renameByName": {}
+          }
+        }
+      ],
+      "type": "table"
+    }
+  ],
+  "preload": false,
+  "schemaVersion": 41,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "text": "business-metrics-app",
+          "value": "business-metrics-app"
+        },
+        "datasource": "${DS_JMIX_MONITORING}",
+        "definition": "label_values(application)",
+        "label": "Application",
+        "name": "application",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(application)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "host.docker.internal:8085",
+          "value": "host.docker.internal:8085"
+        },
+        "datasource": "${DS_JMIX_MONITORING}",
+        "definition": "label_values({application=\"$application\"},instance)",
+        "label": "Instance",
+        "name": "instance",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values({application=\"$application\"},instance)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-30d",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "DAU, WAU, MAU",
+  "uid": "bd186d5f-d4b0-4aad-9914-e05f5736ab99",
+  "version": 6
+}
