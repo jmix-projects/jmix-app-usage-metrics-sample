@@ -120,8 +120,17 @@ The final dataset can be visualized in a different ways.
 <img width="858" height="341" alt="image" src="https://github.com/user-attachments/assets/26a86a0b-2235-4320-8ee1-be752084e764" />
 
 <h3>Full dashboard configuration</h3>
- 
+
+<h4>Dashboard for importing to ready infrastructure</h4> 
+
 The whole dashboard configuration could be found here [Dashboard configuration](dashboards/buiseness_metrics.json)
 
 <img width="1084" height="781" alt="image" src="https://github.com/user-attachments/assets/cf377011-9ef2-43ce-be76-b831191cff7c" />
 
+<h4>Docker-compose project</h4>
+
+You can find a ready-to-use docker-compose project with ready Prometheus and Grafana services configurations.
+
+The project is in the **/monitoring** folder.
+
+Predefined Grafana user account is "**admin/password1**".
